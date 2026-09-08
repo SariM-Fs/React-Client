@@ -43,6 +43,19 @@ export function StationCard({ station, onSelect }) {
       <div style={{ height: 6, borderRadius: 999, background: "var(--panel-2)", overflow: "hidden" }}>
         <div style={{ width: `${pct * 100}%`, height: "100%", background: isActive ? "var(--green)" : "var(--red)", transition: "width .3s ease" }} />
       </div>
+
+      {station.amenities?.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
+          {station.amenities.map((a) => (
+            <span key={a} style={{
+              background: "var(--panel-2)", color: "var(--text-dim)",
+              fontSize: 11, fontWeight: 500, padding: "3px 8px", borderRadius: 999,
+            }}>
+              {a}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
