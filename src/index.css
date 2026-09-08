@@ -1,0 +1,32 @@
+:root {
+  --bg: #0a0f1c;
+  --panel: #121a2b;
+  --panel-2: #161f34;
+  --border: #232d45;
+  --text: #e7ebf3;
+  --text-dim: #8993ab;
+  --green: #34d399;
+  --green-dim: rgba(52, 211, 153, 0.14);
+  --blue: #4f9eff;
+  --blue-dim: rgba(79, 158, 255, 0.14);
+  --red: #f16565;
+  --red-dim: rgba(241, 101, 101, 0.14);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.display { font-family: 'Space Grotesk', sans-serif; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #26314a; border-radius: 4px; }
+
+button { font-family: inherit; cursor: pointer; }
+select { font-family: inherit; }
