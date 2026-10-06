@@ -34,7 +34,9 @@ export function LoginScreen({ onLoggedIn }) {
       localStorage.setItem("ev_role", data.role);
       onLoggedIn(data.token, data.name, data.role);
     } else {
-      setError(data?.message || "Something went wrong. Is the API running?");
+      // ASP.NET validation failures (400) put the reasons in `errors`, not `message`.
+      const validationErrors = data?.errors ? Object.values(data.errors).flat().join(" ") : "";
+      setError(data?.message || validationErrors || "Something went wrong. Is the API running?");
     }
   };
 

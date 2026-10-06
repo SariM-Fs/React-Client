@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------
-// Point this at your running API (check the port in your console
-// output / launchSettings.json when you `dotnet run`).
+// Point this at your running API. Locally that's the `dotnet run`
+// default; a deployed build sets VITE_API_BASE (e.g. on Render) to
+// the hosted API, like https://<your-api>.onrender.com/api
 // ---------------------------------------------------------------
-export const API_BASE = "https://localhost:7051/api";
+export const API_BASE = import.meta.env.VITE_API_BASE || "https://localhost:7051/api";
 
 // Flat rate shown to drivers on every station — not yet backed by a per-station
 // price field on the server, so it's a single shared constant for now.
