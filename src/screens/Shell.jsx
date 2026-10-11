@@ -107,9 +107,12 @@ export function Shell({ token, name, role, onLogout }) {
                     {role === "Admin" && (
                       <button
                         onClick={() => deleteReview(r.id)}
-                        style={{ padding: "3px 10px", borderRadius: 6, fontSize: 11, fontWeight: 600, border: "1px solid var(--border)", background: "var(--red-dim)", color: "var(--red)", cursor: "pointer" }}
+                        title="Delete review"
+                        onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text)"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-dim)"; }}
+                        style={{ padding: 2, border: "none", background: "transparent", color: "var(--text-dim)", display: "flex", alignItems: "center", cursor: "pointer" }}
                       >
-                        Delete
+                        <Icon.trash style={{ width: 13, height: 13 }} />
                       </button>
                     )}
                   </div>
