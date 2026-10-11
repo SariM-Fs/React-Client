@@ -34,6 +34,13 @@ export function Shell({ token, name, role, onLogout }) {
 
   useEffect(() => { loadReviews(); }, [loadReviews]);
 
+  const deleteReview = async (id) => {
+    if (!window.confirm("Delete this review?")) return;
+    const { ok, data } = await api(`/reviews/${id}`, { method: "DELETE", token });
+    if (ok) setReviews((prev) => prev.filter((r) => r.id !== id));
+    else window.alert(data?.message || "Could not delete review.");
+  };
+
   const [view, setView] = useState("stations");
 
   const totalStations = stations.length;
@@ -95,7 +102,17 @@ export function Shell({ token, name, role, onLogout }) {
                     <Stars value={r.rating} size={12} />
                   </div>
                   <div style={{ fontSize: 12, color: "var(--text)", marginBottom: 4, whiteSpace: "pre-wrap" }}>{r.content}</div>
-                  <div style={{ fontSize: 10, color: "var(--text-dim)" }}>{r.driverName} · {new Date(r.createdAt).toLocaleDateString()}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+                    <div style={{ fontSize: 10, color: "var(--text-dim)" }}>{r.driverName} · {new Date(r.createdAt).toLocaleDateString()}</div>
+                    {role === "Admin" && (
+                      <button
+                        onClick={() => deleteReview(r.id)}
+                        style={{ padding: "3px 10px", borderRadius: 6, fontSize: 11, fontWeight: 600, border: "1px solid var(--border)", background: "var(--red-dim)", color: "var(--red)", cursor: "pointer" }}
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
