@@ -40,11 +40,8 @@ export function PaymentModal({ spot, onClose, onConfirm, busy }) {
   };
 
   return (
-    <div style={{
-      position: "fixed", inset: 0, background: "rgba(0,0,0,.6)",
-      display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100,
-    }}>
-      <div style={{ width: 360, background: "var(--panel)", border: "1px solid var(--border)", borderRadius: 16, padding: 24 }}>
+    <div className="modal-overlay">
+      <div className="modal">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Pay for spot #{spot.spotNumber}</h3>
         </div>

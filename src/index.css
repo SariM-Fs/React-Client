@@ -30,3 +30,66 @@ body {
 
 button { font-family: inherit; cursor: pointer; }
 select { font-family: inherit; }
+
+/* ---------- Layout ---------- */
+
+.shell { display: flex; min-height: 100vh; }
+.shell-content { flex: 1; display: flex; min-width: 0; }
+.shell-main { flex: 1; padding: 22px 26px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.shell-aside { width: 288px; flex-shrink: 0; border-left: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.shell-title { font-size: 22px; font-weight: 700; margin: 0; }
+.shell-brand { display: none; }
+
+.stat-row { display: flex; gap: 14px; }
+.stat-card { padding: 16px; }
+
+.sidebar { width: 208px; flex-shrink: 0; border-right: 1px solid var(--border); padding: 22px 14px; display: flex; flex-direction: column; gap: 4px; }
+.sidebar-item { display: flex; align-items: center; gap: 11px; padding: 9px 12px; border-radius: 10px; font-size: 14px; }
+
+.toast { position: fixed; bottom: 24px; right: 24px; max-width: 320px; z-index: 200; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, .6); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
+.modal { width: 360px; max-width: 100%; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
+
+.admin-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px; }
+
+/* Tablet: the reviews panel drops below the main content. */
+@media (max-width: 1100px) {
+  .shell-content { flex-direction: column; }
+  .shell-aside { width: auto; border-left: none; border-top: 1px solid var(--border); padding: 20px 26px; }
+  .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Phone: the sidebar becomes a bottom tab bar. */
+@media (max-width: 768px) {
+  .shell { flex-direction: column; }
+  .shell-content { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  .shell-main { padding: 16px; gap: 16px; }
+  .shell-aside { padding: 16px; }
+  .shell-title { font-size: 17px; }
+  .shell-brand { display: flex; }
+
+  .stat-row { gap: 10px; }
+  .stat-card { padding: 12px; }
+
+  .sidebar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    width: auto; flex-direction: row; justify-content: space-around; gap: 0;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    border-right: none; border-top: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .sidebar-logo, .sidebar-footer, .sidebar-item.disabled, .sidebar-item.duplicate { display: none !important; }
+  .sidebar-item { flex: 1; flex-direction: column; gap: 3px; padding: 6px 2px; font-size: 10.5px; text-align: center; border-radius: 8px; }
+
+  .toast { left: 16px; right: 16px; bottom: calc(76px + env(safe-area-inset-bottom)); max-width: none; }
+
+  .admin-row { flex-wrap: wrap; }
+  .admin-row > button { width: 100%; }
+}
+
+.sidebar-label-short { display: none; }
+@media (max-width: 768px) {
+  .sidebar-label-full { display: none; }
+  .sidebar-label-short { display: inline; }
+}

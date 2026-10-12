@@ -90,7 +90,7 @@ export function SpotsScreen({ token, station, onBack }) {
         <button onClick={onBack} style={{ background: "transparent", border: "none", color: "var(--blue)", fontSize: 13, padding: 0, marginBottom: 10 }}>
           ← Back to stations
         </button>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>{station.name}</h2>
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 5, background: "var(--green-dim)", color: "var(--green)",

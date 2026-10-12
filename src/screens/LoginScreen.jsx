@@ -41,8 +41,8 @@ export function LoginScreen({ onLoggedIn }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg)" }}>
-      <form onSubmit={submit} style={{ width: 340, background: "var(--panel)", border: "1px solid var(--border)", borderRadius: 16, padding: 28 }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg)", padding: 16 }}>
+      <form onSubmit={submit} style={{ width: 340, maxWidth: "100%", background: "var(--panel)", border: "1px solid var(--border)", borderRadius: 16, padding: 28 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 22 }}>
           <div style={{ width: 34, height: 34, borderRadius: 10, background: "var(--green-dim)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Icon.bolt style={{ width: 18, height: 18, color: "var(--green)" }} />

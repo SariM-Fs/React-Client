@@ -71,9 +71,9 @@ export function AdminScreen({ token, stations, loading, onReload }) {
             const isExpanded = expandedStationId === s.id;
             return (
               <div key={s.id} style={{ background: "var(--panel)", border: "1px solid var(--border)", borderRadius: 12 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16 }}>
-                  <div onClick={() => toggleExpand(s)} style={{ cursor: "pointer", flex: 1 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div className="admin-row">
+                  <div onClick={() => toggleExpand(s)} style={{ cursor: "pointer", flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                       <span style={{ fontSize: 11, color: "var(--text-dim)" }}>{isExpanded ? "▾" : "▸"}</span>
                       <div style={{ fontWeight: 600 }}>{s.name}</div>
                       <span style={{
